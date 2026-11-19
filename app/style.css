@@ -1,0 +1,171 @@
+/* Vice City Cover Maker — editor styles. All offline, no external assets. */
+@font-face {
+  font-family: 'Anton';
+  src: url('fonts/Anton-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Pacifico';
+  src: url('fonts/Pacifico-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+}
+
+:root {
+  --bg: #12081f;
+  --bg2: #1d0f33;
+  --panel: #241640;
+  --panel2: #2e1d52;
+  --ink: #fff6ec;
+  --muted: #c9b8e8;
+  --pink: #ff2ea6;
+  --orange: #ff8c42;
+  --cyan: #19e3ff;
+  --line: #3d2a63;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: linear-gradient(160deg, var(--bg) 0%, var(--bg2) 55%, #2a0f2e 100%);
+  color: var(--ink);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  min-height: 100vh;
+}
+
+#topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; padding: 14px 22px;
+  border-bottom: 1px solid var(--line);
+  background: rgba(0, 0, 0, 0.25);
+  flex-wrap: wrap;
+}
+.brand { display: flex; align-items: center; gap: 14px; }
+.brand-mark {
+  font-family: 'Anton', 'Arial Black', sans-serif;
+  font-size: 30px; line-height: 1; color: #fff;
+  background: linear-gradient(135deg, var(--orange), var(--pink) 60%, #7b2ff7);
+  padding: 8px 12px; border-radius: 6px;
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.45);
+  transform: rotate(-3deg);
+}
+.brand h1 {
+  font-family: 'Anton', 'Arial Black', sans-serif;
+  font-size: 26px; letter-spacing: 2px; margin: 0;
+  color: #fff;
+  text-shadow: 0 0 18px rgba(255, 46, 166, 0.55), 3px 3px 0 rgba(0, 0, 0, 0.6);
+}
+.tagline { margin: 2px 0 0; color: var(--muted); font-size: 13px; }
+.top-actions { display: flex; gap: 10px; align-items: center; }
+
+#layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: 18px; padding: 18px 22px; align-items: start;
+}
+#stage { min-width: 0; }
+#canvasWrap {
+  background: #000;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.55);
+}
+#coverCanvas {
+  display: block; width: 100%; height: auto;
+  cursor: crosshair; border-radius: 4px;
+  touch-action: none;
+}
+#hint { color: var(--muted); font-size: 12.5px; margin: 10px 2px 2px; }
+
+#controls { display: flex; flex-direction: column; gap: 14px; }
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+.panel h2 {
+  font-family: 'Anton', 'Arial Black', sans-serif;
+  font-size: 15px; letter-spacing: 1.5px; margin: 0 0 10px;
+  color: var(--cyan);
+}
+.strip { display: flex; gap: 8px; flex-wrap: wrap; min-height: 64px; }
+.strip img {
+  width: 72px; height: 72px; object-fit: cover;
+  border-radius: 6px; border: 2px solid transparent; cursor: pointer;
+}
+.strip img.picked { border-color: var(--pink); box-shadow: 0 0 0 2px rgba(255, 46, 166, 0.4); }
+.strip .empty {
+  color: var(--muted); font-size: 13px; align-self: center;
+}
+.note { color: var(--muted); font-size: 12.5px; line-height: 1.5; }
+.row { margin: 10px 0; }
+.slider-label { display: block; font-size: 13px; color: var(--muted); }
+.slider-label input { width: 100%; accent-color: var(--pink); }
+
+.seg { display: flex; flex-wrap: wrap; gap: 8px; }
+.seg button {
+  flex: 1 1 auto;
+  background: var(--panel2); color: var(--ink);
+  border: 1px solid var(--line); border-radius: 8px;
+  padding: 9px 10px; font-size: 13px; cursor: pointer;
+}
+.seg button:hover { border-color: var(--pink); }
+.seg button.active {
+  background: linear-gradient(135deg, var(--orange), var(--pink));
+  border-color: transparent; color: #fff; font-weight: 700;
+}
+.check { display: block; font-size: 13.5px; margin-top: 10px; color: var(--ink); }
+.check input { accent-color: var(--pink); margin-right: 6px; }
+
+.field { display: block; font-size: 13px; color: var(--muted); margin-bottom: 10px; }
+.field input {
+  display: block; width: 100%; margin-top: 4px;
+  background: #160a28; color: var(--ink);
+  border: 1px solid var(--line); border-radius: 6px;
+  padding: 9px 10px; font-size: 15px;
+}
+.field input:focus { outline: 2px solid var(--pink); border-color: transparent; }
+
+.btn {
+  background: var(--panel2); color: var(--ink);
+  border: 1px solid var(--line); border-radius: 8px;
+  padding: 10px 16px; font-size: 14px; cursor: pointer;
+  text-decoration: none; display: inline-block;
+}
+.btn:hover { border-color: var(--pink); }
+.btn-primary {
+  background: linear-gradient(135deg, var(--orange), var(--pink));
+  border-color: transparent; color: #fff; font-weight: 700;
+}
+.btn.big { width: 100%; padding: 13px; font-size: 16px; margin-top: 10px; }
+.btn.small { font-size: 13px; padding: 8px 10px; }
+
+#foot { padding: 6px 22px 22px; color: var(--muted); font-size: 12px; }
+#foot p { margin: 0; }
+
+/* ---- deterministic shot modes: cover fills the whole frame ---- */
+body.shot-cover, body.shot-portrait, body.shot-wide {
+  background: #000;
+}
+body.shot-cover #topbar, body.shot-cover #controls, body.shot-cover #foot, body.shot-cover #hint,
+body.shot-portrait #topbar, body.shot-portrait #controls, body.shot-portrait #foot, body.shot-portrait #hint,
+body.shot-wide #topbar, body.shot-wide #controls, body.shot-wide #foot, body.shot-wide #hint {
+  display: none;
+}
+body.shot-cover #layout, body.shot-portrait #layout, body.shot-wide #layout {
+  display: block; padding: 0;
+}
+body.shot-cover #canvasWrap, body.shot-portrait #canvasWrap, body.shot-wide #canvasWrap {
+  padding: 0; border: 0; border-radius: 0; box-shadow: none; background: #000;
+}
+body.shot-cover #coverCanvas, body.shot-portrait #coverCanvas, body.shot-wide #coverCanvas {
+  width: 100vw; height: 100vh; object-fit: contain; border-radius: 0;
+  background: #000;
+}
+
+@media (max-width: 900px) {
+  #layout { grid-template-columns: 1fr; }
+}

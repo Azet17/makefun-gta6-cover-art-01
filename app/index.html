@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GTA 6 Cover Art Maker — Vice City Poster Studio</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header id="topbar">
+  <div class="brand">
+    <span class="brand-mark">VC</span>
+    <div>
+      <h1>VICE CITY COVER MAKER</h1>
+      <p class="tagline">Turn your photos into GTA-style poster art — offline, in seconds.</p>
+    </div>
+  </div>
+  <div class="top-actions">
+    <label class="btn btn-primary" for="fileInput">+ Add photos</label>
+    <input type="file" id="fileInput" accept="image/*" multiple hidden>
+    <button class="btn" id="sampleBtn" type="button">Use sample photos</button>
+  </div>
+</header>
+
+<main id="layout">
+  <section id="stage">
+    <div id="canvasWrap">
+      <canvas id="coverCanvas" width="1080" height="1080"></canvas>
+      <p id="hint">Click a panel to select it — drag to pan, scroll to zoom. Drop photos anywhere to add them.</p>
+    </div>
+  </section>
+
+  <aside id="controls">
+    <section class="panel" id="photosPanel">
+      <h2>1 · Photos</h2>
+      <div id="photoStrip" class="strip"></div>
+      <p class="note">Selected panel: <strong id="selectedLabel">none</strong>. Click a photo below, then a panel, to place it. One photo can fill several panels.</p>
+      <div class="row">
+        <button class="btn small" id="fillAllBtn" type="button">Fill all panels with selected photo</button>
+      </div>
+      <label class="slider-label">Zoom <span id="zoomVal">100%</span>
+        <input type="range" id="zoomSlider" min="50" max="300" value="100">
+      </label>
+    </section>
+
+    <section class="panel">
+      <h2>2 · Layout</h2>
+      <div class="seg" id="layoutSeg">
+        <button type="button" data-layout="grid4" class="active">4-panel grid</button>
+        <button type="button" data-layout="hero3">Hero + three</button>
+        <button type="button" data-layout="fullbleed">Full-bleed</button>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>3 · Colour grade</h2>
+      <div class="seg" id="gradeSeg">
+        <button type="button" data-grade="sunset" class="active">Vice City sunset</button>
+        <button type="button" data-grade="neon">Neon night</button>
+        <button type="button" data-grade="golden">Golden hour</button>
+      </div>
+      <label class="check"><input type="checkbox" id="grainToggle" checked> Film grain</label>
+      <label class="check"><input type="checkbox" id="vignetteToggle" checked> Vignette</label>
+    </section>
+
+    <section class="panel">
+      <h2>4 · Lettering</h2>
+      <label class="field">Title block
+        <input type="text" id="titleInput" value="LEONIDA" maxlength="24">
+      </label>
+      <label class="field">Caption (big display type)
+        <input type="text" id="captionInput" value="VICE CITY" maxlength="24">
+      </label>
+      <label class="field">Neon script subtitle
+        <input type="text" id="subtitleInput" value="Leonida Nights" maxlength="40">
+      </label>
+    </section>
+
+    <section class="panel">
+      <h2>5 · Export PNG</h2>
+      <div class="seg" id="sizeSeg">
+        <button type="button" data-size="1080x1080" class="active">1080 × 1080</button>
+        <button type="button" data-size="1080x1350">1080 × 1350</button>
+        <button type="button" data-size="1920x1080">1920 × 1080</button>
+      </div>
+      <button class="btn btn-primary big" id="exportBtn" type="button">Export PNG</button>
+      <p class="note" id="exportStatus">Ready — your photos never leave this machine.</p>
+    </section>
+  </aside>
+</main>
+
+<footer id="foot">
+  <p>Original art only — no Rockstar Games logo, artwork or fonts. Display type: Anton (SIL OFL), script: Pacifico (SIL OFL). Made for the make.fun gta6-cover-art-01 bounty.</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
